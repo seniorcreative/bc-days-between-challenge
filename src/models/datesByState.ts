@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { PhDated, PhWeekOrDay, PhType } from "./dateTypes";
 
 export class DatesByState {

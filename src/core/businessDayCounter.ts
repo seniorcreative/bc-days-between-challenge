@@ -1,9 +1,11 @@
 import { Utils } from "../common/utils";
 import { Constants } from "../models/constants";
-import { PhDated, PhWeekOrDay } from "../models/datesByState";
+import { PhDated, PhWeekOrDay } from "../models/dateTypes";
+import { RulesProvider } from "./rulesProvider";
 
 export class BusinessDayCounter {
 	public WeekdaysBetweenTwoDates (firstDate: Date, secondDate: Date): number {
+		if (secondDate <= firstDate) return 0;
 		let days = 0;
 		for (let date = Utils.dateAsTime(firstDate) + Constants.DAY_MILLISECONDS; date < Utils.dateAsTime(secondDate); date += Constants.DAY_MILLISECONDS) {
 			const day = new Date(date).getDay();
@@ -13,15 +15,16 @@ export class BusinessDayCounter {
 	}
 
 	public BusinessDaysBetweenTwoDates (firstDate: Date,
-		secondDate: Date, publicHolidays: Array<PhDated|PhWeekOrDay>, phRulesFn: (arg0: PhDated | PhWeekOrDay, arg1: number) => number
+		secondDate: Date, publicHolidays: Array<PhDated|PhWeekOrDay>, rules: RulesProvider
 	): number { //
+		if (secondDate <= firstDate) return 0;
 		let days = 0;
 		const unixPhTimes = new Set();
         
 		// Build a unique set of the public holidays as unix times
 		for (const ph in publicHolidays) {
 			const phDate: PhDated|PhWeekOrDay = publicHolidays[ph];
-			const adjustedDateAsTime = phRulesFn(phDate, Constants.CURRENT_YEAR);
+			const adjustedDateAsTime = rules.publicHolidays(phDate, Constants.CURRENT_YEAR);
 			if (adjustedDateAsTime !== 0) unixPhTimes.add(adjustedDateAsTime);
 		}
 

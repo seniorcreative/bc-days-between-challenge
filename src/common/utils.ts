@@ -3,4 +3,3 @@ export class Utils {
 		return date.getTime();
 	}
 }
-  

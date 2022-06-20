@@ -12,7 +12,7 @@ export class RulesProvider {
 		return RulesProvider.instance;
 	}
 	
-	public publicHolidays (publicHoliday: PhDated|PhWeekOrDay, year: number): number  {
+	public publicHolidays (publicHoliday: PhDated|PhWeekOrDay): string  {
 		
 		let offset = 0;
     
@@ -24,7 +24,7 @@ export class RulesProvider {
 			if (day === 0) { offset = Constants.DAY_MILLISECONDS; }
 			if (day === 6) { offset = Constants.DAY_MILLISECONDS * 2; }
 			// TODO: Fix the issue here if there's a public holiday on the monday already 
-			return date.getTime() + offset;
+			return new Date(date.getTime() + offset).toLocaleDateString(Constants.LOCALE);
 		}
 		case PhType.MONTH_WEEK_DAY: {
 			const ph = publicHoliday as PhWeekOrDay;
@@ -37,12 +37,12 @@ export class RulesProvider {
 			// Day has not yet occurred but is this week so include this week as week 1
 				offset = dayDiff * Constants.DAY_MILLISECONDS + ((ph.week-1) * 7 * Constants.DAY_MILLISECONDS);
 			}
-			return firstDayOfMonthDate.getTime() + offset;
+			return new Date(firstDayOfMonthDate.getTime() + offset).toLocaleDateString(Constants.LOCALE);
 		}
 		case PhType.ALWAYS_SAME_DATE: {
 			const ph = publicHoliday as PhDated;
-			const date = new Date(year, ph.month - 1, ph.date);
-			return date.getTime();
+			const date = new Date(ph.year, ph.month - 1, ph.date);
+			return date.toLocaleDateString(Constants.LOCALE);
 		}
 		default: {
 			throw new Error("Type of public holiday not caught");

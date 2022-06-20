@@ -19,19 +19,19 @@ export class BusinessDayCounter {
 	): number { //
 		if (secondDate <= firstDate) return 0;
 		let days = 0;
-		const unixPhTimes = new Set();
+		const localeDates = new Set();
         
 		// Build a unique set of the public holidays as unix times
 		for (const ph in publicHolidays) {
 			const phDate: PhDated|PhWeekOrDay = publicHolidays[ph];
-			const adjustedDateAsTime = rules.publicHolidays(phDate, Constants.CURRENT_YEAR);
-			if (adjustedDateAsTime !== 0) unixPhTimes.add(adjustedDateAsTime);
+			const adjustedDateAsTime = rules.publicHolidays(phDate);
+			localeDates.add(adjustedDateAsTime);
 		}
 
 		for (let date = Utils.dateAsTime(firstDate) + Constants.DAY_MILLISECONDS; date < Utils.dateAsTime(secondDate); date += Constants.DAY_MILLISECONDS) {
 			const dateToCheck = new Date(date);
 			const dayToCheck = dateToCheck.getDay();
-			if (dayToCheck > 0 && dayToCheck < 6 && !unixPhTimes.has(date)) days+=1;
+			if (dayToCheck > 0 && dayToCheck < 6 && !localeDates.has(new Date(date).toLocaleDateString(Constants.LOCALE))) days+=1;
 		}
 
 		return days;

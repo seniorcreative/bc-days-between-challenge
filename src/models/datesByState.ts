@@ -30,9 +30,16 @@ export const DatesByState = {
 		},
 		{
 			name: "Christmas Day",
-			date: 25,
 			type: PhType.MONDAY_IF_WEEKEND,
-			month: 12
+			month: 12,
+			date: 25
+		},
+		{
+			name: "Queens Birthday",
+			type: PhType.MONTH_WEEK_DAY,
+			month: 6,
+			week: 2,
+			day: 1
 		}
 	],
 	VIC: [

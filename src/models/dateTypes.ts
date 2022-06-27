@@ -18,7 +18,7 @@ export interface PhDated extends Ph {
 
 export interface LocalePublicHoliday {
     date: string;
-    fullDay?: boolean;
+    fullDay: boolean;
 }
 
 export interface PhWeekOrDay extends Ph {

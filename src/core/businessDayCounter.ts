@@ -38,9 +38,11 @@ export class BusinessDayCounter {
 			const dayToCheck = dateToCheck.getDay();
 			const convertedDate = new Date(date).toLocaleDateString(Constants.LOCALE);
 			if (dayToCheck > 0 && dayToCheck < 6) {
+				// Count the day if it's NOT one of the listed public holidays
 				if (localeFullDays.indexOf(convertedDate) === -1) {
 					days+=1;
 				}
+				// Count half a day if it's one of the listed half day public holidays
 				if (localeHalfDays.indexOf(convertedDate) !== -1) {
 					days+=0.5;
 				}

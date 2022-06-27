@@ -41,6 +41,6 @@ describe("Scenario 3: test business day calculations for custom holiday types", 
 	it("should output the correct number of working days based on custom holiday rules", () => {
 		const startDate = new Date("4 March 2013");
 		const endDate = new Date("30 June 2013");
-		expect(app.BusinessDaysBetweenTwoDates(startDate, endDate, [...dates.NATIONAL,...dates.NSW], rules)).toBe(82);
+		expect(app.BusinessDaysBetweenTwoDates(startDate, endDate, [...dates.NATIONAL,...dates.NSW], rules)).toBe(82.5);
 	});
 });

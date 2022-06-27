@@ -13,9 +13,16 @@ export interface Ph {
 
 export interface PhDated extends Ph {
     date: number;
+    fullDay: boolean;
+}
+
+export interface LocalePublicHoliday {
+    date: string;
+    fullDay?: boolean;
 }
 
 export interface PhWeekOrDay extends Ph {
     week: number;
     day: number;
+    fullDay: boolean;
 }

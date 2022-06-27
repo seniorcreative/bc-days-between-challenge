@@ -8,36 +8,36 @@ const rules = RulesProvider.getInstance();
 
 /* SCENARIO 1 */
 
-const weekDays : Array<Array<Date>> = [
-	[new Date("7 Oct 2013"), new Date("9 Oct 2013")],
-	[new Date("5 Oct 2013"), new Date("14 Oct 2013")],
-	[new Date("7 Oct 2013"), new Date("1 Jan 2014")],
-	[new Date("7 Oct 2013"), new Date("5 Oct 2013")]
-];
+// const weekDays : Array<Array<Date>> = [
+// 	[new Date("7 Oct 2013"), new Date("9 Oct 2013")],
+// 	[new Date("5 Oct 2013"), new Date("14 Oct 2013")],
+// 	[new Date("7 Oct 2013"), new Date("1 Jan 2014")],
+// 	[new Date("7 Oct 2013"), new Date("5 Oct 2013")]
+// ];
 
-for (const date in weekDays) {
-	const startDate = weekDays[date][0];
-	const endDate = weekDays[date][1];
-	const startDateShort = startDate.toLocaleDateString("en-AU");
-	const endDateShort =endDate.toLocaleDateString("en-AU");
-	console.log(`Working days between ${startDateShort} and ${endDateShort}: ${app.WeekdaysBetweenTwoDates(startDate, endDate)}`);
-}
+// for (const date in weekDays) {
+// 	const startDate = weekDays[date][0];
+// 	const endDate = weekDays[date][1];
+// 	const startDateShort = startDate.toLocaleDateString("en-AU");
+// 	const endDateShort =endDate.toLocaleDateString("en-AU");
+// 	console.log(`Working days between ${startDateShort} and ${endDateShort}: ${app.WeekdaysBetweenTwoDates(startDate, endDate)}`);
+// }
 
-/* SCENARIO 2 */
+// /* SCENARIO 2 */
 
-const businessDays : Array<Array<Date>> = [
-	[new Date("7 Oct 2013"), new Date("9 Oct 2013")],
-	[new Date("24 Dec 2013"), new Date("27 Dec 2013")],
-	[new Date("7 Oct 2013"), new Date("1 Jan 2014")],
-];
+// const businessDays : Array<Array<Date>> = [
+// 	[new Date("7 Oct 2013"), new Date("9 Oct 2013")],
+// 	[new Date("24 Dec 2013"), new Date("27 Dec 2013")],
+// 	[new Date("7 Oct 2013"), new Date("1 Jan 2014")],
+// ];
 
-for (const date in businessDays) {
-	const startDate = businessDays[date][0];
-	const endDate = businessDays[date][1];
-	const startDateShort = startDate.toLocaleDateString("en-AU");
-	const endDateShort =endDate.toLocaleDateString("en-AU");
-	console.log(`National business days between ${startDateShort} and ${endDateShort} : ${app.BusinessDaysBetweenTwoDates(startDate, endDate, dates.NATIONAL, rules)}`);
-}
+// for (const date in businessDays) {
+// 	const startDate = businessDays[date][0];
+// 	const endDate = businessDays[date][1];
+// 	const startDateShort = startDate.toLocaleDateString("en-AU");
+// 	const endDateShort =endDate.toLocaleDateString("en-AU");
+// 	console.log(`National business days between ${startDateShort} and ${endDateShort} : ${app.BusinessDaysBetweenTwoDates(startDate, endDate, dates.NATIONAL, rules)}`);
+// }
 
 /* SCENARIO 3 */
 

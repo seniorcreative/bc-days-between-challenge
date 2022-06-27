@@ -8,21 +8,24 @@ export class DatesByState {
 			type: PhType.MONDAY_IF_WEEKEND,
 			year: 2013,
 			month: 12,
-			date: 25
+			date: 25,
+			fullDay: true
 		},
 		{
 			name: "Boxing Day",
 			type: PhType.MONDAY_IF_WEEKEND,
 			year: 2013,
 			month: 12,
-			date: 26
+			date: 26,
+			fullDay: true
 		},
 		{
 			name: "New Years Day",
 			type: PhType.MONDAY_IF_WEEKEND,
 			year: 2014,
 			month: 1,
-			date: 1
+			date: 1,
+			fullDay: true
 		}
 	];
 
@@ -33,7 +36,8 @@ export class DatesByState {
 			year: 2022,
 			month: 11,
 			week: 2,
-			day: 2
+			day: 2,
+			fullDay: true
 		}
 	];
 
@@ -43,7 +47,8 @@ export class DatesByState {
 			type: PhType.ALWAYS_SAME_DATE,
 			year: 2013,
 			month: 4,
-			date: 25
+			date: 25,
+			fullDay: false
 		},
 		{
 			name: "Queens Birthday",
@@ -51,7 +56,8 @@ export class DatesByState {
 			year: 2013,
 			month: 6,
 			week: 2,
-			day: 1
+			day: 1,
+			fullDay: true
 		}
 	];
 
